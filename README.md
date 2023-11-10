@@ -23,7 +23,7 @@ $ tunblkctl status | cut -f 1,3
 $ tunblkctl status | column -t -s $'\t'
 ```
 
-### Connecting
+### Establish a connection to a VPN
 ```shell
 # Begin connecting to a VPN
 $ tunblkctl connect <some-vpn-conf>
@@ -32,7 +32,7 @@ $ tunblkctl connect <some-vpn-conf>
 $ tunblkctl connect <some-vpn-conf> -w
 ```
 
-### Disconnecting
+### Shutdown VPN connections
 ```shell
 # Disconnect from some particular VPN
 $ tunblkctl disconnect <some-vpn-conf>
