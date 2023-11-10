@@ -79,33 +79,28 @@ on run argv
             set cBytesOut to (get bytesOut of configurations)
 
             set human to (argv does not contain "--raw")
+            set out to ""
              
             if human then
-              set result to "CONFIGURATION\tSTATE\tIN\tOUT" 
-            else
-              set result to ""
+              set out to "CONFIGURATION\tSTATE\tIN\tOUT" 
             end if
 
             repeat with i from 1 to count cNames
-                if result isn't "" then 
-                  set result to result & "\n"
-                else
-                  set result to ""
+                if out isn't "" then 
+                  set out to out & "\n"
                 end if
 
-                set result to result & (item i of cNames) & "\t" & (item i of cStates) & ¬ 
+                set out to out & (item i of cNames) & "\t" & (item i of cStates) & ¬ 
                      "\t" & (my bytes(item i of cBytesIn, human)) & "\t" & (my bytes(item i of cBytesOut, human))
             end repeat
         else if {"list", "ls"} contains command then
           set confs to (get name of configurations)
-          set result to ""
+          set out to ""
           repeat with conf in confs
-            if result isn't "" then 
-              set result to result & "\n"
-            else
-              set result to "" 
+            if out isn't "" then 
+              set out to out & "\n"
             end if 
-            set result to result & conf
+            set out to out & conf
           end repeat
         else if command equal to "quit"
             quit
