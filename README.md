@@ -2,12 +2,11 @@
 Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 
 ## Usage
-There are a various ways **tunblkctl** can be used to automated **VPN** management. 
-Feel free to create shell **aliases** for frequently-used commands. 
+There are various ways **tunblkctl** can be used to automate **VPN** management. 
 
 ### Get information about installed configurations
 ```shell
-# Enumerate installed configuration names
+# Enumerate installed configurations
 $ tunblkctl list
 
 # Show status report for installed configurations
@@ -40,6 +39,8 @@ $ tunblkctl disconnect <some-vpn-conf>
 # Disconnect all the established connections
 $ tunblkctl disconnect
 
-# Quit Tunnelblick (shutting down all the active connections)
+# Quit Tunnelblick (includes active connections shutting down)
 $ tunblkctl quit
 ```
+> [!NOTE]
+> Feel free to create shell **aliases** for frequently-used commands. 
