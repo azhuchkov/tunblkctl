@@ -35,6 +35,7 @@ on run argv
 "Usage: tunblkctl connect <conf>
                  disconnect [conf]
                  list
+                 status
                  quit"
 
     if (count of argv) = 0 then
@@ -71,7 +72,7 @@ on run argv
             else
                 log "Shutting down tunnels: " & (disconnect all)
             end if
-        else if {"list", "ls"} contains command then
+        else if {"status", "st"} contains command then
             set cNames to (get name of configurations)
             set cStates to (get state of configurations)
             set cBytesIn to (get bytesIn of configurations)
@@ -95,7 +96,17 @@ on run argv
                 set result to result & (item i of cNames) & "\t" & (item i of cStates) & ¬ 
                      "\t" & (my bytes(item i of cBytesIn, human)) & "\t" & (my bytes(item i of cBytesOut, human))
             end repeat
-            
+        else if {"list", "ls"} contains command then
+          set confs to (get name of configurations)
+          set result to ""
+          repeat with conf in confs
+            if result isn't "" then 
+              set result to result & "\n"
+            else
+              set result to "" 
+            end if 
+            set result to result & conf
+          end repeat
         else if command equal to "quit"
             quit
             log "Quit Tunnelblick."
