@@ -22,12 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 *)
 
-on bytes(amount, human)
+on format_bytes(amount, human)
   if human then
     return (round(amount / 1000)) & " kB"
-  else
-    return amount
   end if
+  return amount
 end bytes
 
 on run argv
@@ -73,10 +72,17 @@ on run argv
                 log "Shutting down tunnels: " & (disconnect all)
             end if
         else if {"status", "st"} contains command then
-            set cNames to (get name of configurations)
-            set cStates to (get state of configurations)
-            set cBytesIn to (get bytesIn of configurations)
-            set cBytesOut to (get bytesOut of configurations)
+            set confs to {}
+	
+            -- convert data for easier access
+            repeat with i from 1 to count (get name of configurations)
+              copy { ¬
+                name: (item i of (get name of configurations)), ¬
+                state: (item i of (get state of configurations)), ¬
+                bytesIn: (item i of (get bytesIn of configurations)), ¬
+                bytesOut: (item i of (get bytesOut of configurations)) ¬
+              } to end of confs
+            end repeat
 
             set human to (argv does not contain "--raw")
             set out to ""
@@ -85,13 +91,17 @@ on run argv
               set out to "CONFIGURATION\tSTATE\tIN\tOUT" 
             end if
 
-            repeat with i from 1 to count cNames
+            repeat with conf in confs
                 if out isn't "" then 
                   set out to out & "\n"
                 end if
 
-                set out to out & (item i of cNames) & "\t" & (item i of cStates) & ¬ 
-                     "\t" & (my bytes(item i of cBytesIn, human)) & "\t" & (my bytes(item i of cBytesOut, human))
+                set out to ¬
+                    out & ¬ 
+                    (name of conf) & "\t" & ¬
+                    (state of conf) & "\t" & ¬
+                    (my format_bytes(bytesIn of conf, human)) & "\t" & ¬
+                    (my format_bytes(bytesOut of conf, human))
             end repeat
         else if {"list", "ls"} contains command then
           set confs to (get name of configurations)
