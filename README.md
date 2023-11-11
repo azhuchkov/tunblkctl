@@ -1,6 +1,11 @@
 # tunblkctl
 Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 
+## Installing
+The easiest way to install the tool is using [Homebrew](https://brew.sh/):
+
+`$ brew install azhuchkov/tools/tunblkctl`
+
 ## Usage
 There are various ways **tunblkctl** can be used to automate **VPN** management. 
 
