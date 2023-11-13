@@ -23,13 +23,28 @@ if [ "$#" -eq 0 ]; then
 fi
 
 DIVIDER=${TUNBLKCTL_DIVIDER:-1024}
+
 LIB_DIR="$( cd "$( dirname $(readlink -f "${BASH_SOURCE[0]}") )" &> /dev/null && pwd )/../libexec"
+
+debug () {
+  while read -r IN
+  do
+    if [[ "$TUNBLKCTL_DEBUG" =~ ^(on|true|yes)$ ]]; then
+      log "$1>> ${IN}"
+    fi
+  done
+}
 
 osascript () {
   /usr/bin/osascript "$LIB_DIR/$1.applescript" "${@:2}"
 }
 
-if ! osascript bundleid &> /dev/null ; then
+osasilent () {
+  osascript "$@" 2>&1 | debug "$1"
+  return "${PIPESTATUS[0]}"
+}
+
+if ! osasilent bundleid ; then
   log "Couldn't find Tunnelblick. Is it installed?"
   exit 2
 fi
@@ -64,22 +79,22 @@ case "$command" in
     ;;
   connect|con)
     if [ "$1" = '--wait' ] && [ -n "$2" ]; then
-      (osascript connect "$2" && osascript await "$2") &> /dev/null
+      osasilent connect "$2" && osasilent await "$2"
     elif [ "$1" != '--wait' ] && [ -n "$1" ]; then
-      osascript connect "$1" &> /dev/null
+      osasilent connect "$1"
     else
       usage "Not enough arguments." 
     fi 
     ;;
   disconnect|dis)
     if [ -n "$1" ]; then
-      osascript disconnect "$1" &> /dev/null
+      osasilent disconnect "$1"
     else
-      osascript disconnect-all &> /dev/null
+      osasilent disconnect-all
     fi
     ;;
   quit|q)
-    osascript quit &> /dev/null
+    osasilent quit
     ;;
   *)
     usage "Unexpected command: $command"
