@@ -1,0 +1,102 @@
+#!/bin/bash
+
+log () {
+  echo -e "$@" >&2
+}
+
+usage () {
+  if [ -n "$*" ]; then 
+    log "$*"; 
+  fi
+
+  log "Usage: $0 list" 
+  log "       $0 status [--strip] [--no-strip]" 
+  log "       $0 connect [--wait] <VPN>" 
+  log "       $0 disconnect [VPN]" 
+  log "       $0 quit" 
+
+  exit 1
+}
+
+if [ "$#" -eq 0 ]; then
+  usage
+fi
+
+DIVIDER=${TUNBLKCTL_DIVIDER:-1024}
+
+LIB_DIR="$( cd "$( dirname "$(readlink -f "${BASH_SOURCE[0]}")" )" &> /dev/null && pwd )/../libexec"
+
+debug () {
+  while read -r IN
+  do
+    if [[ "$TUNBLKCTL_DEBUG" =~ ^(on|true|yes)$ ]]; then
+      log "$1>> ${IN}"
+    fi
+  done
+}
+
+osascript () {
+  /usr/bin/osascript "$LIB_DIR/$1.applescript" "${@:2}"
+}
+
+osasilent () {
+  osascript "$@" 2>&1 | debug "$1"
+  return "${PIPESTATUS[0]}"
+}
+
+if ! osasilent bundleid ; then
+  log "Couldn't find Tunnelblick. Is it installed?"
+  exit 2
+fi
+
+command="$1"
+shift
+
+case "$command" in
+  list|ls)
+    osascript status 2>&1 | cut -f1 | ([ -t 1 ] && column || cat)
+    ;;
+  status|st)
+    if ! { [ -t 1 ] && [[ $* != *'--strip'* ]] \
+           || [[ $* == *'--no-strip'* ]]; } then
+      strip=yes
+    fi
+    
+    header="CONFIGURATION\tSTATUS\tIN\tOUT"
+    if [[ "$TUNBLKCTL_EXT" =~ on|true|yes ]]; then
+      header="$header\tAUTOCONNECT"
+    fi
+
+    tabs=${header//[^\t]}
+    columns=$(( ${#tabs} + 1 ))
+
+    ([ -z "$strip" ] && echo -e $header; osascript status 2>&1) \
+      |  cut -f "1-$columns" \
+      | ([ -z "$strip" ] \
+          && awk -v FS='\t' -v OFS='\t' -v div="$DIVIDER" -f "$LIB_DIR/numfmt.awk" \
+            | column -t -s $'\t' \
+          || cat) 
+    ;;
+  connect|con)
+    if [ "$1" = '--wait' ] && [ -n "$2" ]; then
+      osasilent connect "$2" && osasilent await "$2"
+    elif [ "$1" != '--wait' ] && [ -n "$1" ]; then
+      osasilent connect "$1"
+    else
+      usage "Not enough arguments." 
+    fi 
+    ;;
+  disconnect|dis)
+    if [ -n "$1" ]; then
+      osasilent disconnect "$1"
+    else
+      osasilent disconnect-all
+    fi
+    ;;
+  quit|q)
+    osasilent quit
+    ;;
+  *)
+    usage "Unexpected command: $command"
+    ;;
+esac 
