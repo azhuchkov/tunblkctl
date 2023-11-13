@@ -9,37 +9,43 @@ The easiest way to install the tool is using [Homebrew](https://brew.sh/):
 ## Usage
 There are various ways **tunblkctl** can be used to automate **VPN** management. 
 
+### Overview
+```
+Usage: tunblkctl list
+       tunblkctl status [--strip] [--no-strip]
+       tunblkctl connect [--wait] <VPN>
+       tunblkctl disconnect [VPN]
+       tunblkctl quit
+```
+
 ### Get information about installed configurations
 ```shell
 # Enumerate installed configurations
 $ tunblkctl list
+cloud		corporate
+```
 
+```shell
 # Show status report for installed configurations
 $ tunblkctl status
-
-# Show status report in a form suitable for script processing (w/o headers, etc.)
-$ tunblkctl status --raw
-
-# Show only names and inbound traffic volumes
-$ tunblkctl status | cut -f 1,3
-
-# Align columns (if necessary)
-$ tunblkctl status | column -t -s $'\t'
+CONFIGURATION  STATUS     IN     OUT
+cloud          CONNECTED  4.91M  888.84K
+corporate      EXITING    6.35K  4.76K
 ```
 
 ### Establish a connection to a VPN
 ```shell
 # Begin connecting to a VPN
-$ tunblkctl connect <some-vpn-conf>
+$ tunblkctl connect <VPN>
 
 # Begin connecting to a VPN and wait until connection is established
-$ tunblkctl connect <some-vpn-conf> -w
+$ tunblkctl connect --wait <VPN>
 ```
 
 ### Shutdown VPN connections
 ```shell
 # Disconnect from some particular VPN
-$ tunblkctl disconnect <some-vpn-conf>
+$ tunblkctl disconnect <VPN>
 
 # Disconnect all the established connections
 $ tunblkctl disconnect
