@@ -23,7 +23,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 DIVIDER=${TUNBLKCTL_DIVIDER:-1024}
-LIB_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../libexec"
+LIB_DIR="$( cd "$( dirname $(readlink -f "${BASH_SOURCE[0]}") )" &> /dev/null && pwd )/../libexec"
 
 osascript () {
   /usr/bin/osascript "$LIB_DIR/$1.applescript" "${@:2}"
