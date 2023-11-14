@@ -1,0 +1,56 @@
+.TH TUNBLKCTL 1 "November 2023" "tunblkctl v0.3.0.alpha" "User Manuals"
+.SH NAME
+tunblkctl \- command-line frontend for Tunnelblick.
+.SH SYNOPSIS
+.B tunblkctl
+<COMMAND> [OPTIONS...] [ARGS...]
+.SH DESCRIPTION
+.B tunblkctl
+is a command-line interface that facilitates the execution of common VPN
+management operations for Tunnelblick. This tool is particularly useful
+for scripting, automation of testing scenarios, or any situation where a
+command-line interface is preferable or required.
+.SH COMMANDS
+.TP
+.B list
+Enumerates installed VPN configurations. Formats names in columns when
+output is a tty; otherwise, it uses a line-per-config approach.
+.TP
+.B status [--strip|--no-strip]
+Displays a table with VPN configurations, their statuses, and traffic
+statistics. Depending on the output destination (tty or not) formats
+table or skips formatting, which can be also controlled by the options
+above.
+.TP
+.B connect [--wait] <VPN>
+Establishes a new VPN connection. The
+.B --wait
+option blocks command completion until the connection is up (or down).
+.TP
+.B disconnect [VPN]
+Shuts down VPN connection. If no VPN is specified, all the established
+connections are subject to shut down.
+.TP
+.B quit
+Forces Tunnelblick to shut down all active VPN connections and then quit.
+.SH ENVIRONMENT
+.TP
+.B TUNBLKCTL_DIVIDER
+By default, formatted traffic statistics is printed using powers of 2
+(kibi-, mebi-, ...). To use powers of 10 (kilo-, mega-) this variable
+should be set to 1000.
+.TP
+.B TUNBLKCTL_DEBUG
+Set to "on" to enable verbose output from the internals of
+.BR tunblkctl .
+.TP
+.B TUNBLKCTL_EXT
+Set to "on" to enable additional column AUTOCONNECT in status reports.
+.SH AUTHOR
+Andrey Zhuchkov
+.SH VERSION
+0.3.0.alpha
+.SH BUGS
+This version should be considered as an early preview, and so unstable
+(including API).
+
