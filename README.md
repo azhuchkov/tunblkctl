@@ -4,7 +4,7 @@ Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 ## Features
 - **Lightweight**: Under **15KB** uncompressed.
 - **Tab-Completion**: Includes scripts for ZSH and Bash.
-- **Rapid Installation**: Quick setup with [Homebrew](#installing).
+- **Rapid Installation**: [Quick setup](#installing) with Homebrew.
 - **Zero Dependencies**: No additional installations required.
 - **Customizable**: Tailor output using environment variables and switches.
 - **Well-Documented**: Complete manual pages.
