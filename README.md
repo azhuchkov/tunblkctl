@@ -65,6 +65,13 @@ $ tunblkctl quit
 > [!NOTE]
 > Feel free to create shell **aliases** for frequently-used commands.
 
+## FAQ
+**Q: I installed the software using the recommended method, but tab-completion doesn't work. Why?**  
+A: Try using a new shell session by opening a new terminal tab or window.
+
+**Q: My shell session is restarted, but tab-completion still isn't working. What should I do?**  
+A: Ensure that your shell is on the list of supported shells and is [properly configured](https://docs.brew.sh/Shell-Completion). 
+
 ## License
 `tunblkctl` is licensed under the terms of the MIT license.
 See [LICENSE](https://github.com/azhuchkov/tunblkctl/blob/main/LICENSE)
