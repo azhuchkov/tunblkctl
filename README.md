@@ -5,10 +5,9 @@ Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 - **Lightweight**: Under **15KB** uncompressed.
 - **Tab-Completion**: Includes scripts for ZSH and Bash.
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
-- **Zero Dependencies**: No additional installations required.
-- **Customizable**: Tailor output using environment variables and switches.
-- **Well-Documented**: Complete manual pages.
-- **Command Aliases**: Efficient and fewer keystrokes.
+- **Zero Dependencies**: No need for heavy runtime.
+- **Configurable**: Tailor output using environment variables and switches.
+- **Well-Documented**: Complete [user manual](https://github.com/azhuchkov/tunblkctl/wiki/User-Manual).
 - **Open License**: Freedom with MIT license.
 
 ## Installing
