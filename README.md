@@ -64,4 +64,9 @@ $ tunblkctl disconnect
 $ tunblkctl quit
 ```
 > [!NOTE]
-> Feel free to create shell **aliases** for frequently-used commands. 
+> Feel free to create shell **aliases** for frequently-used commands.
+
+## License
+`tunblkctl` is licensed under the terms of the MIT license.
+See [LICENSE](https://github.com/azhuchkov/tunblkctl/blob/main/LICENSE)
+for more information.
