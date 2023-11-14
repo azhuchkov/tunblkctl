@@ -12,26 +12,26 @@ for scripting, automation of testing scenarios, or any situation where a
 command-line interface is preferable or required.
 .SH COMMANDS
 .TP
-.B list
+.B list|ls
 Enumerates installed VPN configurations. Formats names in columns when
 output is a tty; otherwise, it uses a line-per-config approach.
 .TP
-.B status [--strip|--no-strip]
+.B status|st [--strip|--no-strip]
 Displays a table with VPN configurations, their statuses, and traffic
 statistics. Depending on the output destination (tty or not) formats
 table or skips formatting, which can be also controlled by the options
 above.
 .TP
-.B connect [--wait] <VPN>
+.B connect|con [--wait] <VPN>
 Establishes a new VPN connection. The
 .B --wait
 option blocks command completion until the connection is up (or down).
 .TP
-.B disconnect [VPN]
+.B disconnect|dis [VPN]
 Shuts down VPN connection. If no VPN is specified, all the established
 connections are subject to shut down.
 .TP
-.B quit
+.B quit|q
 Forces Tunnelblick to shut down all active VPN connections and then quit.
 .SH ENVIRONMENT
 .TP
