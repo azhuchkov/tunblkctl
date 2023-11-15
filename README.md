@@ -7,7 +7,7 @@ Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
 - **Zero Dependencies**: Only macOS and Tunnelblick are required.
 - **Configurable**: Tailor output using environment variables and switches.
-- **Well-Documented**: Complete [user manual](wiki/User-Manual).
+- **Well-Documented**: Complete [user manual][man].
 - **Open License**: Freedom with MIT license.
 
 ## Usage
@@ -27,7 +27,7 @@ workvpn        EXITING    6.35K  4.76K
 
 $ tunblkctl disconnect
 ```
-Find more commands and options in the [full manual](wiki/User-Manual).
+Find more commands and options in the [full manual][man].
 
 ## Installing
 The easiest way to install the tool is using [Homebrew](https://brew.sh/):
@@ -45,3 +45,6 @@ A: Ensure that your shell is on the list of supported shells and is [properly co
 `tunblkctl` is licensed under the terms of the MIT license.
 See [LICENSE](https://github.com/azhuchkov/tunblkctl/blob/main/LICENSE)
 for more information.
+
+
+[man]: https://github.com/azhuchkov/tunblkctl/wiki/User-Manual
