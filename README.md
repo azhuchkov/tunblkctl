@@ -1,7 +1,8 @@
 # tunblkctl
-Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
+A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
+workflows. Perfect for integrating VPN management into command-line driven tasks.
 
-## Features
+## Hightlights
 - **Lightweight**: Under **15KB** uncompressed.
 - **Tab-Completion**: Includes scripts for ZSH and Bash.
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
@@ -48,3 +49,4 @@ for more information.
 
 
 [man]: https://github.com/azhuchkov/tunblkctl/wiki/User-Manual
+[Tunnelblick]: https://tunnelblick.net
