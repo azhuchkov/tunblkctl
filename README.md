@@ -2,7 +2,7 @@
 A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
 workflows. Perfect for integrating VPN management into command-line driven tasks.
 
-## Hightlights
+## Highlights
 - **Lightweight**: Under **15KB** uncompressed.
 - **Tab-Completion**: Includes scripts for ZSH and Bash.
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
@@ -13,7 +13,7 @@ workflows. Perfect for integrating VPN management into command-line driven tasks
 
 ## Usage
 **tunblkctl** is very _easy_ to use. Thanks to tab-completion and aliases, 
-it's even simpler and more convenient. 
+`tunblkctl` is even simpler and more convenient. 
 
 ```console
 $ tunblkctl ls
@@ -43,7 +43,7 @@ A: Try using a new shell session by opening a new terminal tab or window.
 A: Ensure that your shell is on the list of supported shells and is [properly configured](https://docs.brew.sh/Shell-Completion). 
 
 ## License
-`tunblkctl` is licensed under the terms of the MIT license.
+`tunblkctl` is licensed under the terms of the MIT License.
 See [LICENSE](https://github.com/azhuchkov/tunblkctl/blob/main/LICENSE)
 for more information.
 
