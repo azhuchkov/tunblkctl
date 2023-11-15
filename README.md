@@ -7,63 +7,32 @@ Command-line frontend for [Tunnelblick](https://tunnelblick.net/).
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
 - **Zero Dependencies**: Only macOS and Tunnelblick are required.
 - **Configurable**: Tailor output using environment variables and switches.
-- **Well-Documented**: Complete [user manual](https://github.com/azhuchkov/tunblkctl/wiki/User-Manual).
+- **Well-Documented**: Complete [user manual](wiki/User-Manual).
 - **Open License**: Freedom with MIT license.
+
+## Usage
+**tunblkctl** is very _easy_ to use. Thanks to tab-completion and aliases, 
+it's even simpler and more convenient. 
+
+```console
+$ tunblkctl ls
+cloudvpn		workvpn
+
+$ tunblkctl connect --wait cloudvpn
+
+$ tunblkctl status
+CONFIGURATION  STATUS     IN     OUT
+cloudvpn       CONNECTED  4.91M  888.84K
+workvpn        EXITING    6.35K  4.76K
+
+$ tunblkctl disconnect
+```
+Find more commands and options in the [full manual](wiki/User-Manual).
 
 ## Installing
 The easiest way to install the tool is using [Homebrew](https://brew.sh/):
 
 `$ brew install azhuchkov/tools/tunblkctl`
-
-## Usage
-There are various ways **tunblkctl** can be used to automate **VPN** management. 
-
-### Overview
-```
-Usage: tunblkctl list
-       tunblkctl status [--strip] [--no-strip]
-       tunblkctl connect [--wait] <VPN>
-       tunblkctl disconnect [VPN]
-       tunblkctl quit
-```
-
-### Get information about installed configurations
-```shell
-# Enumerate installed configurations
-$ tunblkctl list
-cloud		corporate
-```
-
-```shell
-# Show status report for installed configurations
-$ tunblkctl status
-CONFIGURATION  STATUS     IN     OUT
-cloud          CONNECTED  4.91M  888.84K
-corporate      EXITING    6.35K  4.76K
-```
-
-### Establish a connection to a VPN
-```shell
-# Begin connecting to a VPN
-$ tunblkctl connect <VPN>
-
-# Begin connecting to a VPN and wait until connection is established
-$ tunblkctl connect --wait <VPN>
-```
-
-### Shutdown VPN connections
-```shell
-# Disconnect from some particular VPN
-$ tunblkctl disconnect <VPN>
-
-# Disconnect all the established connections
-$ tunblkctl disconnect
-
-# Quit Tunnelblick (includes active connections shutting down)
-$ tunblkctl quit
-```
-> [!NOTE]
-> Feel free to create shell **aliases** for frequently-used commands.
 
 ## FAQ
 **Q: I installed the software using the recommended method, but tab-completion doesn't work. Why?**  
