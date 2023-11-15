@@ -12,7 +12,7 @@ workflows. Perfect for integrating VPN management into command-line driven tasks
 - **Open License**: Freedom with MIT license.
 
 ## Usage
-**tunblkctl** is very _easy_ to use. Thanks to tab-completion and aliases, 
+`tunblkctl` is very _easy_ to use. Thanks to tab-completion and aliases, 
 `tunblkctl` is even simpler and more convenient. 
 
 ```console
