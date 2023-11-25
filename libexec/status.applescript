@@ -1,23 +1,16 @@
 tell app "Tunnelblick"
-  set confs to {}
-
-  -- convert data for easier access
-  repeat with i from 1 to count (get name of configurations)
-    copy { ¬
-      name: (item i of (get name of configurations)), ¬
-      state: (item i of (get state of configurations)), ¬
-      bytesIn: (item i of (get bytesIn of configurations)), ¬
-      bytesOut: (item i of (get bytesOut of configurations)), ¬
-      autoconnect: (item i of (get autoconnect of configurations)) ¬
-    } to end of confs
-  end repeat
-
-  repeat with conf in confs
+  set cNames to (get name of configurations)
+  set cStates to (get state of configurations)
+  set cBytesIn to (get bytesIn of configurations)
+  set cBytesOut to (get bytesOut of configurations)
+  set cAutoconnect to (get autoconnect of configurations)
+  
+  repeat with i from 1 to count cNames
     log ¬
-      (name of conf) & "\t" & ¬
-      (state of conf) & "\t" & ¬
-      (bytesIn of conf) & "\t" & ¬
-      (bytesOut of conf) & "\t" & ¬
-      (autoconnect of conf)
+      (item i of cNames) & "\t" & ¬
+      (item i of cStates) & "\t" & ¬
+      (item i of cBytesIn) & "\t" & ¬
+      (item i of cBytesOut) & "\t" & ¬
+      (item i of cAutoconnect)
   end repeat
 end tell
