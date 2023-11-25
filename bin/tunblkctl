@@ -8,12 +8,14 @@ usage () {
   if [ -n "$*" ]; then 
     log "$*"; 
   fi
+  
+  name="$(basename "$0")"
 
-  log "Usage: $0 list" 
-  log "       $0 status [--strip] [--no-strip]" 
-  log "       $0 connect [--wait] <VPN>" 
-  log "       $0 disconnect [VPN]" 
-  log "       $0 quit" 
+  log "Usage: $name list" 
+  log "       $name status [--strip] [--no-strip]" 
+  log "       $name connect [--wait] <VPN>" 
+  log "       $name disconnect [VPN]" 
+  log "       $name quit" 
 
   exit 1
 }
