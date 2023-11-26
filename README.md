@@ -1,6 +1,8 @@
 # tunblkctl
+<img src="https://github.com/azhuchkov/tunblkctl/assets/765471/4b749824-812b-475d-a7d8-66377118ac0c" alt="logo" align="right"/>
 A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
 workflows. Perfect for integrating VPN management into command-line driven tasks.
+<br clear="right"/>
 
 ## Highlights
 - **Lightweight**: Under **15KB** uncompressed.
