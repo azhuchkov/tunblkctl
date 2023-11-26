@@ -2,10 +2,11 @@
 
 <img src="https://github.com/azhuchkov/tunblkctl/assets/765471/25bf7e5a-e53b-4c8d-b99f-e96da1dae6bc" alt="logo" align="right"/>
 
+![GitHub release (with filter)](https://img.shields.io/github/v/release/azhuchkov/tunblkctl)
+![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/azhuchkov/tunblkctl/latest)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/azhuchkov/tunblkctl)
+![GitHub License](https://img.shields.io/github/license/azhuchkov/tunblkctl)
 ![GitHub Repo stars](https://img.shields.io/github/stars/azhuchkov/tunblkctl)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![GitHub issues](https://img.shields.io/github/issues/azhuchkov/tunblkctl)
-![GitHub repo size](https://img.shields.io/github/repo-size/azhuchkov/tunblkctl)
 
 A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
 workflows. Perfect for integrating VPN management into command-line driven tasks.
