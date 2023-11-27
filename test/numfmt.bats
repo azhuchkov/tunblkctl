@@ -26,6 +26,7 @@ EOF
 @test "IEC formatting" {
   run_numbers_format 1024
 
+  assert_success
   assert_output - <<EOF
 0.00B
 1000.00B
@@ -44,6 +45,7 @@ EOF
   skip 'fails due to rounding issue'
   run_numbers_format 1000
 
+  assert_success
   assert_output - <<EOF
 0.00B
 1.00K
@@ -61,12 +63,14 @@ EOF
 @test "single value format" {
   run $COMMAND -v div=1024 <<< 1024
 
+  assert_success
   assert_output "1.00K"    
 }
 
 @test "two values in row" {
   run $COMMAND -v div=1024 <<< '1024 50'
 
+  assert_success
   assert_output "1.00K 50.00B"    
 }
 
@@ -76,6 +80,7 @@ EOF
 2048
 EOF
 
+  assert_success
   assert_output - <<EOF
 1.00K 50.00B
 2.00K
@@ -88,6 +93,7 @@ a 1024 b 2048 c
 1024 a 2048 b 4096
 EOF
 
+  assert_success
   assert_output - <<EOF
 a 1.00K b 2.00K c
 1.00K a 2.00K b 4.00K
