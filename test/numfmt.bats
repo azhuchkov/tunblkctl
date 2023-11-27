@@ -21,7 +21,7 @@ run_numbers_format() {
 EOF
 }
 
-@test "test IEC formatting" {
+@test "IEC formatting" {
   run_numbers_format 1024
 
   assert_output - <<EOF
@@ -36,7 +36,7 @@ EOF
 EOF
 }
 
-@test "test SI formatting" {
+@test "SI formatting" {
   skip 'fails due to rounding issue'
   run_numbers_format 1000
 
@@ -52,19 +52,19 @@ EOF
 EOF
 }
 
-@test "test single value format" {
+@test "single value format" {
   run $COMMAND -v div=1024 <<< 1024
 
   assert_output "1.00K"    
 }
 
-@test "test two values in row" {
+@test "two values in row" {
   run $COMMAND -v div=1024 <<< '1024 50'
 
   assert_output "1.00K 50.00B"    
 }
 
-@test "test three values in two rows" {
+@test "three values in two rows" {
   run $COMMAND -v div=1024 <<EOF
 1024 50
 2048
@@ -76,7 +76,7 @@ EOF
 EOF
 }
 
-@test "test mixed values input" {
+@test "mixed values input" {
   run $COMMAND -v div=1024 <<EOF
 a 1024 b 2048 c
 1024 a 2048 b 4096
