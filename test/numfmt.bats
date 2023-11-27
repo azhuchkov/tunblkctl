@@ -75,3 +75,15 @@ EOF
 2.00K
 EOF
 }
+
+@test "test mixed values input" {
+  run $COMMAND -v div=1024 <<EOF
+a 1024 b 2048 c
+1024 a 2048 b 4096
+EOF
+
+  assert_output - <<EOF
+a 1.00K b 2.00K c
+1.00K a 2.00K b 4.00K
+EOF
+}
