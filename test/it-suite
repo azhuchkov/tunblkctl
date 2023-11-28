@@ -1,0 +1,26 @@
+#!/usr/bin/env bats --show-output-of-passing-tests -T
+
+setup() {
+  PATH="$BATS_TEST_DIRNAME/../bin:$PATH"
+}
+
+@test "tunblkctl list" {
+  tunblkctl list
+}
+
+@test "tunblkctl status --no-strip" {
+  tunblkctl status --no-strip
+}
+
+@test "tunblkctl connect --wait <VPN>; tunblkctl disconnect <VPN>" {
+  VPN=$(tunblkctl list | head -1)
+ 
+  tunblkctl connect --wait "$VPN"
+  tunblkctl disconnect "$VPN"
+
+  osascript "$BATS_TEST_DIRNAME/../libexec/await.applescript" "$VPN"
+}
+
+@test "tunblkctl quit" {
+  tunblkctl quit
+}
