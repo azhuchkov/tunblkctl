@@ -15,11 +15,21 @@ setup() {
   export TMP_FILE
 }
 
+assert_usage_print() {
+  assert_output -p - <<EOF
+Usage: tunblkctl list
+       tunblkctl status [--strip] [--no-strip]
+       tunblkctl connect [--wait] <VPN>
+       tunblkctl disconnect [VPN]
+       tunblkctl quit
+EOF
+}
+
 @test 'usage must be shown if no args' {
   run tunblkctl
 
   assert_failure
-  assert_line -p "Usage:"
+  assert_usage_print
 }
 
 @test 'usage must be shown on wrong command' {
@@ -27,7 +37,7 @@ setup() {
 
   assert_failure
   assert_line 'Unexpected command: prepare'
-  assert_line -p "Usage:"
+  assert_usage_print
 }
 
 @test 'usage must be shown on "connect" w/o arg' {
@@ -35,7 +45,7 @@ setup() {
 
   assert_failure
   assert_line 'Not enough arguments.'
-  assert_line -p 'Usage:'
+  assert_usage_print
 }
 
 @test "'list' (and 'ls') must return proper list of conf names" {
