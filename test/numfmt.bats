@@ -42,7 +42,6 @@ EOF
 }
 
 @test "SI formatting" {
-  skip 'fails due to rounding issue'
   run_numbers_format 1000
 
   assert_success
