@@ -24,10 +24,11 @@ if [ "$#" -eq 0 ]; then
   usage
 fi
 
-DIVIDER=$([[ "$TUNBLKCTL_SI_MODE" =~ ^(on|true|yes)$ ]] && echo 1000 || echo 1024)
+DIVIDER=$([[ "$TUNBLKCTL_SI_MODE" == "on" ]] && echo 1000 || echo 1024)
 
 if [ -z "$TUNBLKCTL_ROOT_PATH" ]; then
-  TUNBLKCTL_ROOT_PATH="$( cd "$( dirname "$(readlink -f "${BASH_SOURCE[0]}")" )" &> /dev/null && pwd )/../"
+  RESOLVED_SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
+  TUNBLKCTL_ROOT_PATH="${RESOLVED_SCRIPT_PATH%/*}/../"
 fi
 
 LIB_DIR="$TUNBLKCTL_ROOT_PATH/libexec"
@@ -35,25 +36,25 @@ LIB_DIR="$TUNBLKCTL_ROOT_PATH/libexec"
 debug () {
   while read -r IN
   do
-    if [[ "$TUNBLKCTL_DEBUG" =~ ^(on|true|yes)$ ]]; then
+    if [ "$TUNBLKCTL_DEBUG" == "on" ]; then
       log "$1>> ${IN}"
     fi
   done
 }
 
 osascript () {
-  /usr/bin/osascript "$LIB_DIR/$1.applescript" "${@:2}"
+  if ! /usr/bin/osascript "$LIB_DIR/$1.applescript" "${@:2}" ; then
+    if ! /usr/bin/osascript "$LIB_DIR/bundleid.applescript" &> /dev/null ; then
+      log "Couldn't get Tunnelblick ID. Is it installed?"
+      exit 2
+    fi
+  fi
 }
 
 osasilent () {
   osascript "$@" 2>&1 | debug "$1"
   return "${PIPESTATUS[0]}"
 }
-
-if ! osasilent bundleid ; then
-  log "Couldn't find Tunnelblick. Is it installed?"
-  exit 2
-fi
 
 command="$1"
 shift
