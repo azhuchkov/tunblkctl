@@ -68,18 +68,11 @@ case "$command" in
       strip=yes
     fi
     
-    header="CONFIGURATION\tSTATUS\tIN\tOUT"
-    if [[ "$TUNBLKCTL_EXT" =~ on|true|yes ]]; then
-      header="$header\tAUTOCONNECT"
-    fi
-
-    tabs=${header//[^\t]}
-    columns=$(( ${#tabs} + 1 ))
+    header="VPN\tSTATUS\tIN\tOUT\tAUTO"
 
     ([ -z "$strip" ] && echo -e $header; osascript status 2>&1) \
-      |  cut -f "1-$columns" \
       | ([ -z "$strip" ] \
-          && awk -v FS='\t' -v OFS='\t' -v div="$DIVIDER" -f "$LIB_DIR/numfmt.awk" \
+          && awk -F '\t' -v OFS='\t' -v div="$DIVIDER" -f "$LIB_DIR/numfmt.awk" -f "$LIB_DIR/prettify.awk" \
             | column -t -s $'\t' \
           || cat) 
     ;;

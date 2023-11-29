@@ -4,8 +4,11 @@ setup() {
   load 'test_helper/bats-support/load'
   load 'test_helper/bats-assert/load'
 
-  DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" &> /dev/null && pwd )"
-  COMMAND="awk -f $DIR/../libexec/numfmt.awk"
+  AWK_PROGRAM="$BATS_FILE_TMPDIR/bytes.awk"
+
+  echo '{print numfmt($0)}' > "$AWK_PROGRAM"
+
+  COMMAND="awk -f $BATS_TEST_DIRNAME/../libexec/numfmt.awk -f $AWK_PROGRAM"
 }
 
 run_numbers_format() {
@@ -56,45 +59,5 @@ EOF
 1.07G
 1.00T
 1.10T
-EOF
-}
-
-@test "single value format" {
-  run $COMMAND -v div=1024 <<< 1024
-
-  assert_success
-  assert_output "1.00K"    
-}
-
-@test "two values in row" {
-  run $COMMAND -v div=1024 <<< '1024 50'
-
-  assert_success
-  assert_output "1.00K 50.00B"    
-}
-
-@test "three values in two rows" {
-  run $COMMAND -v div=1024 <<EOF
-1024 50
-2048
-EOF
-
-  assert_success
-  assert_output - <<EOF
-1.00K 50.00B
-2.00K
-EOF
-}
-
-@test "mixed values input" {
-  run $COMMAND -v div=1024 <<EOF
-a 1024 b 2048 c
-1024 a 2048 b 4096
-EOF
-
-  assert_success
-  assert_output - <<EOF
-a 1.00K b 2.00K c
-1.00K a 2.00K b 4.00K
 EOF
 }

@@ -63,23 +63,27 @@ EOF
 
     assert_success
     assert_output - <<EOF
-cloud vpn	CONNECTED	1024	2048
-work.vpn	EXITING	3072	4096
-proton	GET_CONFIG	5120	6144
+cloud vpn	CONNECTED	1024	2048	LAUNCH
+work.vpn	EXITING	3072	4096	NO
+proton	GET_CONFIG	5120	6144	START
 EOF
   done
 }
 
 @test "'status --no-strip' (and 'st') must return correct table" {
+  GREEN=$(printf "\033[32m")
+  YELLOW=$(printf "\033[33m")
+  RESET=$(printf "\033[00m")
+
   for cmd in status st; do
     run tunblkctl $cmd --no-strip
 
     assert_success
     assert_output - <<EOF
-CONFIGURATION  STATUS      IN     OUT
-cloud vpn      CONNECTED   1.00K  2.00K
-work.vpn       EXITING     3.00K  4.00K
-proton         GET_CONFIG  5.00K  6.00K
+${RESET}VPN        IN     OUT    AUTO${RESET}
+${GREEN}cloud vpn  1.00K  2.00K  ✓${RESET}
+${RESET}work.vpn   3.00K  4.00K  -${RESET}
+${YELLOW}proton     5.00K  6.00K  ✓✓${RESET}
 EOF
   done  
 }
