@@ -35,13 +35,13 @@ connections are subject to shut down.
 Forces Tunnelblick to shut down all active VPN connections and then quit.
 .SH ENVIRONMENT
 .TP
-.B TUNBLKCTL_DIVIDER
+.B TUNBLKCTL_SI_MODE
 By default, formatted traffic statistics is printed using powers of 2
 (kibi-, mebi-, ...). To use powers of 10 (kilo-, mega-) this variable
-should be set to 1000.
+should be set to 'on'.
 .TP
 .B TUNBLKCTL_DEBUG
-Set to "on" to enable verbose output from the internals of
+Set to 'on' to enable verbose output from the internals of
 .BR tunblkctl .
 .SH AUTHOR
 Andrey Zhuchkov

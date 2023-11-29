@@ -24,7 +24,7 @@ if [ "$#" -eq 0 ]; then
   usage
 fi
 
-DIVIDER=${TUNBLKCTL_DIVIDER:-1024}
+DIVIDER=$([[ "$TUNBLKCTL_SI_MODE" =~ ^(on|true|yes)$ ]] && echo 1000 || echo 1024)
 
 if [ -z "$TUNBLKCTL_ROOT_PATH" ]; then
   TUNBLKCTL_ROOT_PATH="$( cd "$( dirname "$(readlink -f "${BASH_SOURCE[0]}")" )" &> /dev/null && pwd )/../"
