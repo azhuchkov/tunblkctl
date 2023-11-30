@@ -1,0 +1,23 @@
+name: Verify
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    
+    - run: brew install bats-core
+    - run: brew install shellcheck
+
+    - name: Run checks
+      run: make all

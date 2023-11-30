@@ -4,6 +4,7 @@
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/azhuchkov/tunblkctl)
 ![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/azhuchkov/tunblkctl/latest)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/azhuchkov/tunblkctl/makefile.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/azhuchkov/tunblkctl)
 ![GitHub License](https://img.shields.io/github/license/azhuchkov/tunblkctl)
 ![GitHub Repo stars](https://img.shields.io/github/stars/azhuchkov/tunblkctl)
