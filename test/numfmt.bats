@@ -15,6 +15,7 @@ run_numbers_format() {
   run $COMMAND -v div=$1 <<EOF
 0
 1000
+1023
 1024
 1026
 1000000
@@ -33,6 +34,7 @@ EOF
   assert_output - <<EOF
 0.00B
 1000.00B
+1023.00B
 1.00K
 1.00K
 976.56K
@@ -51,6 +53,7 @@ EOF
   assert_output - <<EOF
 0.00B
 1.00K
+1.02K
 1.02K
 1.03K
 1.00M
