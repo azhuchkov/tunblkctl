@@ -7,7 +7,7 @@
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/azhuchkov/tunblkctl/makefile.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/azhuchkov/tunblkctl)
 ![GitHub License](https://img.shields.io/github/license/azhuchkov/tunblkctl)
-![GitHub Repo stars](https://img.shields.io/github/stars/azhuchkov/tunblkctl)
+![GitHub Repo stars](https://img.shields.io/github/stars/azhuchkov/tunblkctl?style=flat)
 
 A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
 workflows. Perfect for integrating VPN management into command-line driven tasks.
