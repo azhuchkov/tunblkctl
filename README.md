@@ -34,9 +34,9 @@ cloudvpn		workvpn
 $ tunblkctl connect --wait cloudvpn
 
 $ tunblkctl status
-CONFIGURATION  STATUS     IN     OUT
-cloudvpn       CONNECTED  4.91M  888.84K
-workvpn        EXITING    6.35K  4.76K
+VPN        IN     OUT      AUTO
+cloudvpn   4.91M  888.84K  -
+workvpn    6.35K  4.76K    -
 
 $ tunblkctl disconnect
 ```
@@ -46,6 +46,10 @@ Find more commands and options in the [full manual][man].
 The easiest way to install the tool is using [Homebrew](https://brew.sh/):
 
 `$ brew install azhuchkov/tools/tunblkctl`
+
+Or to install latest (**unstable**) version:
+
+`$ brew install --HEAD azhuchkov/tools/tunblkctl`
 
 ## FAQ
 **Q: I installed the software using the recommended method, but tab-completion doesn't work. Why?**  
