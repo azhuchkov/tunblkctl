@@ -47,7 +47,7 @@ The easiest way to install the tool is using [Homebrew](https://brew.sh/):
 
 `$ brew install azhuchkov/tools/tunblkctl`
 
-Or to install latest (**unstable**) version:
+Or to install the latest (**unstable**) version:
 
 `$ brew install --HEAD azhuchkov/tools/tunblkctl`
 
