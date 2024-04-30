@@ -16,7 +16,7 @@ workflows. Perfect for integrating VPN management into command-line driven tasks
 
 ## Highlights
 - **Lightweight**: Under **15KB** uncompressed.
-- **Tab-Completion**: Includes scripts for ZSH and Bash.
+- **Tab-Completion**: Includes scripts for ZSH, Bash and Fish.
 - **Rapid Installation**: [Quick setup](#installing) with Homebrew.
 - **Zero Dependencies**: Only macOS and Tunnelblick are required.
 - **Configurable**: Tailor output using environment variables and switches.
