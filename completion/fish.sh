@@ -12,6 +12,10 @@ complete -c tunblkctl --condition "not __fish_seen_subcommand_from $commands" \
 complete -c tunblkctl --condition "__fish_seen_subcommand_from connect disconnect" \
     -a "(tunblkctl list)"
 
+# Complete wait option
+complete -c tunblkctl --condition "__fish_seen_subcommand_from connect" \
+    -l 'wait' -d 'Wait for the connection to be established.'
+
 # Complete strip option
 complete -c tunblkctl --condition "__fish_seen_subcommand_from status" \
     -l strip -d 'Strip output formatting (raw mode)'
