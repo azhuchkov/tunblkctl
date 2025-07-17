@@ -1,0 +1,15 @@
+name: Homebrew Installation Test
+
+on:
+  schedule:
+    - cron: '0 0 */14 * *'
+  workflow_dispatch:
+
+jobs:
+  homebrew-install:
+    runs-on: macos-latest
+    steps:
+      - name: Install via Homebrew
+        run: brew install azhuchkov/tools/tunblkctl
+      - name: Check usage output
+        run: tunblkctl 2>&1 | grep -q "Usage:"
