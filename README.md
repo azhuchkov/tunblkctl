@@ -43,14 +43,13 @@ $ tunblkctl disconnect
 Find more commands and options in the [full manual][man].
 
 ## Installing
-The easiest way to install the tool is using [Homebrew](https://brew.sh/). The
-corresponding formula lives in the [homebrew tap][brew-tap]:
+The easiest way to install the tool is using [Homebrew](https://brew.sh/):
 
-`$ brew install azhuchkov/tools/tunblkctl`
+`$ brew install azhuchkov/tools/tunblkctl` ([formula source][brew-tap])
 
 Or to install the latest (**unstable**) version:
 
-`$ brew install --HEAD azhuchkov/tools/tunblkctl`
+`$ brew install --HEAD azhuchkov/tools/tunblkctl` ([formula source][brew-tap])
 
 ## FAQ
 **Q: I installed the software using the recommended method, but tab-completion doesn't work. Why?**  
