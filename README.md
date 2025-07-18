@@ -43,7 +43,7 @@ $ tunblkctl disconnect
 Find more commands and options in the [full manual][man].
 
 ## Installing
-The easiest way to install the tool is using [Homebrew](https://brew.sh/):
+The easiest way to install the tool is using [Homebrew]'s [formula]:
 
 `$ brew install azhuchkov/tools/tunblkctl`
 
@@ -66,3 +66,5 @@ for more information.
 
 [man]: https://github.com/azhuchkov/tunblkctl/wiki/User-Manual
 [Tunnelblick]: https://tunnelblick.net
+[Homebrew]: https://brew.sh/
+[formula]: https://github.com/azhuchkov/homebrew-tools/blob/main/Formula/tunblkctl.rb
