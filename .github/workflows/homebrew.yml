@@ -7,7 +7,12 @@ on:
 
 jobs:
   homebrew-install:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        arch: [X64, ARM64]
+    runs-on:
+      labels: macos-latest
+      architecture: ${{ matrix.arch }}
     steps:
       - name: Install via Homebrew
         run: brew install azhuchkov/tools/tunblkctl
