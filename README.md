@@ -9,15 +9,15 @@
 ![GitHub License](https://img.shields.io/github/license/azhuchkov/tunblkctl)
 ![GitHub Repo stars](https://img.shields.io/github/stars/azhuchkov/tunblkctl?style=flat)
 
-A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related 
-workflows. Perfect for integrating VPN management into command-line driven tasks.
+A streamlined command-line frontend for [Tunnelblick], designed to automate VPN-related workflows.
+Perfect for integrating VPN management into command-line-driven tasks.
 
 <br clear="right"/>
 
 ## Highlights
 - **Lightweight**: Under **15KB** uncompressed.
 - **Tab-Completion**: Includes scripts for ZSH, Bash and Fish.
-- **Rapid Installation**: [Quick setup](#installing) with Homebrew.
+- **Rapid Installation**: [Quick setup](#installation) with Homebrew.
 - **Zero Dependencies**: Only macOS and Tunnelblick are required.
 - **Configurable**: Tailor output using environment variables and switches.
 - **Well-Documented**: Complete [user manual][man].
@@ -42,7 +42,7 @@ $ tunblkctl disconnect
 ```
 Find more commands and options in the [full manual][man].
 
-## Installing
+## Installation
 The easiest way to install the tool is using [Homebrew]'s [formula]:
 
 `$ brew install azhuchkov/tools/tunblkctl`
