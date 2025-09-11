@@ -2,7 +2,7 @@ name: Homebrew Installation Test
 
 on:
   schedule:
-    - cron: '0 0 */14 * *'
+    - cron: '0 10 5,20 * *'
   workflow_dispatch:
 
 jobs:
